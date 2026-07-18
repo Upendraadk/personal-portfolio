@@ -15,7 +15,7 @@ const projects = [
       "A modern and responsive portfolio website built with React, Vite, and Tailwind CSS. Features smooth animations, reusable components, dark theme, and an EmailJS-powered contact form.",
     image: "/projects/portfolio.PNG",
     tags: ["React", "Tailwind CSS", "Vite", "EmailJS"],
-    link: "https://your-vercel-link.vercel.app",
+    link: "https://upendrapersonal-portfolio.vercel.app/",
     github: "https://github.com/Upendraadk/portfolio-website",
   },
   {
