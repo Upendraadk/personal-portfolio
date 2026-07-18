@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+@theme {
+  /* Default (Dark Theme) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --color-highlight: var(--highlight);
+  --color-surface: var(--surface);
+
+  --radius: 0.75rem;
+}
+
+/* -------------------- */
+/* Dark Theme (Default) */
+/* -------------------- */
+
+:root,
+[data-theme="dark"] {
+  --background: #0f1418;
+  --foreground: #f0f2f5;
+
+  --card: #141a1f;
+
+  --primary: #20b2a6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1f2830;
+  --secondary-foreground: #20b2a6;
+
+  --muted: #252e37;
+  --muted-foreground: #7a8491;
+
+  --border: #242b32;
+
+  --surface: #1a2329;
+
+  --highlight: #f5a623;
+}
+
+/* -------------------- */
+/* Light Theme */
+/* -------------------- */
+
+[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #111827;
+
+  --card: #fcfcfd;
+
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+
+  --secondary: #eef6f6;
+  --secondary-foreground: #0f766e;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --border: #dbe4ea;
+
+  --surface: #f8fafc;
+
+  --highlight: #d97706;
+}
+
+@layer base {
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+  }
+
+  .glow-text{
+    text-shadow: 0 0 30px
+      color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+
+  .glow-border{
+    box-shadow: 0 0 20px
+      color-mix(in srgb, var(--color-primary) 20%, transparent),
+      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent)
+  }
+}
+
+@layer utilities {
+  
+  @keyframes fade-in {
+    from{
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+
+  @keyframes slow-drift {
+    0%,
+    100% {
+      transform: translate(0,0);
+    }
+    25% {
+      transform: translate(20px, -30px);
+    }
+    50% {
+      transform: translate(-15px, -20px);
+    }
+    75% {
+      transform: translate(30px, 10px);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animate-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  @keyframes animated-border {
+    0% {
+      stroke-dashoffset: 400;
+    }
+    100% {
+      stroke-dashoffset: -550;
+    }
+  }
+
+  .group:hover .animated-border-path {
+    animation: animated-border 1.5s linear infinite;
+  }
+
+  .animated-border:hover {
+    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
+  }
+
+  .timeline-glow {
+    box-shadow: 0 0 40px
+        color-mix(in srgb, var(--color-primary) 35%, transparent),
+      0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+}
