@@ -16,7 +16,7 @@ const projects = [
     image: "/projects/portfolio.PNG",
     tags: ["React", "Tailwind CSS", "Vite", "EmailJS"],
     link: "https://upendrapersonal-portfolio.vercel.app/",
-    github: "https://github.com/Upendraadk/portfolio-website",
+    github: "https://github.com/Upendraadk/personal-portfolio",
   },
   {
     title: "Hospital Management System",
